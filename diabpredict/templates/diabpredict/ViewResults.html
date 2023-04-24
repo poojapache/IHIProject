@@ -1,0 +1,37 @@
+{% extends 'diabpredict\baseForm.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title id="signUpPage">DiabPredict</title>
+        <link rel="stylesheet" href="{% static 'diabpredict/styles.css' %}">
+    </head>
+    <body>
+        <div id="resultsContainer">
+            {% if data %}
+                <table id = "resultsTable">
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Test Date</th>
+                        <th>Test Result</th>
+                    </tr>
+                    {% for rec in data %}
+                    <tr>
+                        <td>{{ rec.test_id }}</td>
+                        <td>{{ rec.test_date }}</td>
+                        {% if rec.diab_pred == 0 %}
+                            <td>{{ 'No Diabetes' }}</td>
+                        {% else %}
+                            <td>{{ 'Diabetes' }}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+            <h1 id="noResults">Sorry, no results to display!</h1>
+            {% endif %}
+        </div>
+    <script src="{% static 'diabpredict/homePage.js' %}"></script></body>
+</html>
+{% endblock %}

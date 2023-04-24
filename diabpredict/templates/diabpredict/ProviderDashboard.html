@@ -1,0 +1,124 @@
+{% extends 'diabpredict\baseForm.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Page</title>
+    <link rel="stylesheet" href="{% static 'diabpredict/styles.css' %}">
+</head>
+<body id="bodyContainer">
+    <div id="headerContent">
+        <div id="logoContainer">
+            <img id="heading-icon" src="{% static 'diabpredict/icon.png' %}" alt="Icon">
+            <h1 id="heading"><b><u>DiabPredict</u></b></h1>
+            <!-- <a href="diabpredict/homePage.html">
+                <img id="home-icon" src="{% static 'diabpredict/home.png' %}" alt="Home icon">
+            </a> -->
+        </div>
+        <div id="greetingsContainer" >
+            <div id="greetingsTextContainer">
+                <h1 style = "font-family: 'Poppins', sans-serif;width:100%" id="title-greeting">Hello {{first_name}}!</h1>
+                <h3 style = "font-family: 'Poppins', sans-serif;" id="subtitle-greeting">Healthy greetings</h3>
+            </div>
+            <div class="circle">
+                <img src="{% static 'diabpredict/doc.jpg' %}" alt="Provider Image">
+            </div>
+        </div>
+    </div>
+
+    <div id="contentContainer">
+        <div id="right-container">
+        <div id = "demographics">
+            <div>
+                <img  class="patientPic" src="media/{{ profilePic }}" alt="Provider Image">
+            </div>
+            <div id="patientdemographics">
+                <table id="patientinfo">
+                    <tr>
+                        <td><b>Doctor Name</b></td>
+                        <td>{{first_name}} {{last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Age</b></td>
+                        <td>{{age}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gender</b></td>
+                        <td>{{gender}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Phone</b></td>
+                        <td>{{phone}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Speciality</b></td>
+                        <td>{{speciality}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Attached to</b></td>
+                        <td>{{hospital}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="overflow: auto;" id="patientsList">
+            <h3><p style = "font-family: 'Poppins', sans-serif;">Patient List</p></h3>
+                {% for patient in patients %}
+                        <button onclick = "accordion()" class="accordion">
+                            <div class="patientPicContainer">
+                                <img  class="patientPicHolder" src="media/{{ patient.profilePic }}" alt="Provider Image">
+                                <b>{{ patient.first_name }} {{ patient.last_name }}</b>
+                            </div>
+                            
+                        </button>
+                        <div class="panel">
+                            <table id="patientListDetails">
+                                <tr>
+                                    <td>Patient ID: </td>
+                                    <td>{{ patient.user_id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender: </td>
+                                    <td>{{ patient.gender }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth: </td>
+                                    <td>{{ patient.date_of_birth }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email: </td>
+                                    <td>{{ patient.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone: </td>
+                                    <td>{{ patient.phone }}</td>
+                                </tr>
+                            </table>
+                            <!-- <p>{{ patient }}</p> -->
+                        </div>
+                {% endfor %}
+        </div>
+    </div>
+
+    <div id="dialog-box-outside">
+        <div id="button-container">
+            <button onclick = "viewPatients()" id="viewPatientBtn" class="rounded-button">View Patients</button>
+        </div>
+        <div id="img-container">
+            <img id="dialog-image" src="{% static 'diabpredict/providerDialogBox.png' %}" alt="Blood test Image">
+            <h4 id="dialog-footnote">Know your sugar levels before they <br> become a problem with <span id="transition-footnote">DiabPredict</span></h4>    
+        </div>
+     </div>
+</div>
+<script src="{% static 'diabpredict/patientLandingPage.js' %}"></script>
+</body>
+</html>
+{% endblock %}

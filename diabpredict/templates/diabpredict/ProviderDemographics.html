@@ -1,0 +1,32 @@
+{% extends 'diabpredict\baseForm.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title id="signUpPage">DiabPredict</title>
+        <link rel="stylesheet" href="{% static 'diabpredict/styles.css' %}">
+    </head>
+    <body>
+        <div style="display:block; position: absolute;margin-left: 5%; margin-right:5%;width:1000px;">
+            
+                <form action="{% url 'providerDemographics' %}" method = "POST" enctype="multipart/form-data" id="sign-up-form">
+                    <fieldset>
+                        <legend><h1>Additional Details</h1></legend>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button id="signup-button" type = "submit" class = "signup" style = "width:100%; margin-bottom: 5%;">Submit</button>
+                    <!-- {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %} -->
+                </fieldset>
+                </form>
+        
+        </div>
+    <script src="{% static 'diabpredict/homePage.js' %}"></script></body>
+</html>
+{% endblock %}

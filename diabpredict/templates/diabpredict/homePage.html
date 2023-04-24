@@ -1,0 +1,31 @@
+{% load static %}
+<html>
+<head>
+    <title id="homePage">DiabPredict</title>
+    <link rel="stylesheet" href="{% static 'diabpredict/styles.css' %}">
+</head>
+<body id="homePageBodyContainer">
+
+    <div id="homePageContentContainer">
+        <img id="icon" src="{% static 'diabpredict/icon.png' %}" alt="Icon">
+        <div id="titleContainer">
+                <h1 id="title"><b><u>DiabPredict</u></b></h1>
+                <h3 id="sub-title">Take Control of your health!</h3>
+                <button id="get-started-button" onclick="changeButton()">Get Started</button>
+                <div id="category-button-container" style="display: none;">
+                    <button id="login-button" onclick="window.location.href='Login.html'">Login</button>
+                    <button id="signup-button" onclick="window.location.href='SignUp.html'">Sign Up</button>
+                </div>
+        </div>
+
+    </div>
+
+
+
+<div>
+    <h3 id="footnote">Amruta Rao | Katelvn Jordan | Nemath Ahmed | Pankhuri Singh | Pooja Pache</h3>
+</div>
+
+<script src="{% static 'diabpredict/homePage.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,785 @@
+body {
+    min-width: 960px;
+    margin: 0 auto;
+    background-color:#4a50d2;
+}
+h2 {
+    margin: 0px;
+}
+p {
+    margin: 0px;
+}
+#icon {
+    position: absolute;
+    padding: 0.1em;
+    left: 0;
+  right: 0;
+  margin:auto;
+    /* top: 5vw; */
+    align-items: center;
+    width: 25em;
+    height: 25em;
+    z-index: -1; /* Set the z-index so the image is behind other content */
+}
+
+#title {
+    position: relative;
+    padding: 0em;
+    /* top: 10vw; */
+    /* left: 90vh; */
+    text-align: center;
+    font-size: 108px;
+    background: linear-gradient(to right, #FFFFFF 30%, #FFDD40 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    margin:0;
+}
+
+#sub-title {
+    position: relative;
+    padding: 0.1em;
+    /* top: 26vw;
+    left: 101vh; */
+    text-align: center;
+    font-size: 45px;
+    font-weight: 100;
+    color: #FFFFFF;
+    background: linear-gradient(to right, #FFFFFF 40%, #FFDD40 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin:0;
+}
+
+#get-started-button{
+    position: relative;
+    padding: 0.1em;
+    /* top: 45vw; */
+    /* left: 102vh; */
+    text-align: center;
+    font-size: 40px;
+    background-color: #A7B6E0;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 15px 30px;
+    border: none;
+}
+#get-started-button:hover,#login-button:hover, #signup-button:hover
+{
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
+#footnote {
+    position: absolute;
+    /* padding: 0.1em; */
+    bottom: 0;
+    /* left: 3vh; */
+    text-align: center;
+    font-size: 35px;
+    color: #FFFFFF;
+    font-weight: 100;
+    width: 100%;
+}
+
+#category-button-container{
+    position: relative;
+    padding: 0.1em;
+    /* top: 40vw;
+    left: 99vh; */
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    width:100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#login-button, #signup-button
+{
+    width:50%;
+}
+#category-title{
+    font-weight: 100;
+}
+
+#category-button-container button {
+    text-align: center;
+    font-size: 30px;
+    background-color: #A7B6E0;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: none;
+    margin: 10px;
+}
+
+#heading {
+    position: relative;
+    /* padding: 0.1em; */
+    /* top: 1vw;*/
+    /* left: 10vh; */
+    text-align: center;
+    font-size: 40px;
+    background: linear-gradient(to right, #FFFFFF 30%, #FFDD40 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#heading-icon {
+    position: relative;
+    /* padding: 0.1em; */
+    /* top: 1vw;
+    left: 4vh; */
+    width: 100px;
+    height: 100%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+    /* z-index: -1; Set the z-index so the image is behind other content */
+}
+
+#home-icon {
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+    width: 3vw;
+    height: 5vh;
+}
+
+#questionnaire
+ {
+    position: relative;
+    margin-top: 130px;
+    background-color: #BABDF9; /* set the background color to a light purple */
+    border: 1px solid #BABDF9; /* add a border around the box */
+    padding: 1.5em; /* add some padding inside the box */
+    padding-top:2.5em;
+    margin-left: 5%;
+    width: 80%;
+    /* top:5em; */
+    border-radius: 1em;
+    display: none;
+}
+#questionnaire label {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+#questions {
+    background: rgba(146, 150, 243, 0.58);
+    border-radius: 25px;
+    padding: 5px;
+}
+#answers{
+    margin-top: 10px;
+    margin-left: 60px;
+    position: center;
+}
+
+#question {
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
+    margin: 20px;
+}
+input[type="radio"] {
+    margin: 0 15px;
+  }
+
+
+#outer-accordion-box {
+    width: 65vw;
+    background-color: #BABDF9;
+    top: 20vh;
+    position: absolute;
+    left: 2vw;
+    border-radius: 1em;
+    height: 75vh;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+#accordion {
+    position: absolute;
+    top: 6vh;
+    left: 2.5vw;
+    width: 60vw;
+    padding-bottom: 1em;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #9296F3;
+    padding: 10px;
+    cursor: pointer;
+    border-top: 10px solid #BABDF9;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-family: Monaco;
+}
+
+.accordion-header .icon::before {
+    content: "\002B";
+    font-size: 20px;
+}
+
+.accordion-header.active .icon::before {
+    content: "\2212";
+}
+
+.accordion-body {
+    padding: 10px;
+    background-color: #CCCEFF;
+    display: none;
+}
+
+.circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    overflow: hidden;
+    /* right: 1vw; */
+    position: relative;
+    /* top: 10vh; */
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+}
+
+#title-greeting{
+    color: #FFFFFF;
+    font-size: 30px;
+    position: relative;
+    /* right: 10vw;
+    top: 8vh; */
+}
+
+#subtitle-greeting{
+    color: #FFFFFF;
+    font-size: 18px;
+    position: relative;
+    font-weight: normal;
+    /* right: 12vw;
+    top: 13vh; */
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+/* 
+#dialog-box-outside {
+    height: 75vh;
+    width: 30vw;
+    background-color: #BABDF9;
+    top: 20vh;
+    position: absolute;
+    right: 1vw;
+    border-radius: 1em;
+} */
+
+.rounded-button {
+    border-radius: 20px;
+    background-color: #9FA3F2;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: relative;
+    /* top: 25vh; */
+    /* left: 6vw; */
+    font-weight: lighter;
+    font-family: Monaco;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.rounded-button:hover {
+    filter: brightness(90%);
+}
+
+#dialog-image{
+    position: relative;
+    width: 20vw;
+    height: 22vh;
+    /* top: 44vh; */
+    /* left: 5vw; */
+    border: 1px solid #000000;
+    margin: 0.5em;
+    margin-top: 1.5em;
+}
+
+#dialog-footnote{
+    position: relative;
+    /* top: 63vh; */
+    /* left: 5vw; */
+    text-align: center;
+    margin: 0.5em;
+    font-weight: lighter;
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 2em;
+}
+
+#transition-footnote{
+    font-weight: 900;
+    background: linear-gradient(to right, #FFFFFF 30%, #FFDD40 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.question {
+    color: #000000;
+    font-size: larger;
+    font-weight: normal;
+}
+
+.radio-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+
+/* Patient Demographics - Added by Pooja */
+#bodyContainer
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 2em;
+}
+#headerContent
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+    width:100%;
+    /* height: auto; */
+    /* padding-top:1em; */
+    /* padding-left:1em; */
+}
+#contentContainer
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: row;
+    margin-top:2em;
+    margin-bottom: 2em;
+    width:100%;
+    padding:0;
+}
+#dialog-box-outside {
+    background-color: #BABDF9;
+    position: relative;
+    border-radius: 1em;
+    height: 100%;
+    /* width: 30vw; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 2em;
+}
+
+#demographics
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: row;
+    /* top:2em; */
+    /* margin-left : 5%; */
+    background-color: #BABDF9;
+    border-radius: 1em;
+    width: 100%;
+}
+
+.patientPic
+{
+    position: relative;
+    height: 250px;
+    width:250px;
+    padding: 2%;
+    margin:2em;
+    border-radius: 25px;
+}
+
+#patientdemographics
+{
+    position: relative;
+    /* height: 100%; */
+    width:100%;
+    padding: 2%;
+    /* height: auto; */
+    margin:2em;
+    background-color: #9FA3F2;
+    /* filter: brightness(90%); */
+    border-radius: 10px;
+}
+
+#button-container
+{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width:100%;
+}
+#img-container
+{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    margin-top: 2em;
+}
+
+#patientinfo
+{
+    font-weight: lighter;
+    color: #FFFFFF;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #9FA3F2;
+    color: #000000;
+    border-radius: 1em;
+}
+
+#patientinfo td
+{
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+}
+
+#right-container
+{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    /* margin-right:5em; */
+    margin-left:0;
+}
+
+
+.form-check
+{
+    position: relative;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    padding-left: 0;
+}
+
+.form-check-input
+{
+    position:relative;
+}
+
+#div_id_gen_health .form-control, #div_id_education .form-control, #div_id_income .form-control
+{
+    padding:0;
+}
+
+output { 
+    position: relative;
+    background-image: linear-gradient(#9FA3F2, #9FA3F2);
+    width: 40px; 
+    height: 30px; 
+    text-align: center; 
+    color: white; 
+    border-radius: 10px; 
+    display: inline-block; 
+    font: bold 15px/30px Georgia;
+    bottom: 175%;
+    left: 0;
+  }
+  output:after { 
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #9FA3F2;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -1px;
+  }
+
+  #div_id_patient_id, #div_id_bmi, #div_id_age, #div_id_sex, #div_id_diab_pred
+  {
+    display: none;
+  }
+
+  .form-group  .requiredField
+  {
+    background-color:#9FA3F2;
+    border-radius: 10px;
+    padding:1em;
+    margin-top:0.5em;
+  }
+
+  .signup
+  {
+    width:100%; 
+    margin:5% 0;
+    background-color:#9FA3F2;
+    border-radius: 10px;
+    padding:1em;
+    font-size: 18px;
+    font-weight: bolder;
+    color:#FFFFFF;
+    border: #FFFFFF 1px solid;
+  }
+
+  #homePageContentContainer
+  {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    /* background-color: #FFDD40; */
+    margin:0.5em;
+    padding:0.5em;
+  }
+
+  #homePageBodyContainer
+  {
+    position: relative;
+    background-color: #4a50d2;
+    /* height: 100%; */
+    width: 100%;
+    padding: 0.5em;
+    margin:0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    flex-direction: column;
+    min-height: 600px;
+    min-width: 960px;
+    /* margin: 0 auto; */
+  }
+
+  #titleContainer
+  {
+    position: relative;
+    /* width:100%; */
+    display: inline-flex;
+    align-items: stretch;
+    flex-direction: column;
+    /* background-color: aqua; */
+    margin: 2em;
+    padding: 1em;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: center;
+    top:10em;
+  }
+
+fieldset
+  {
+    border:2px solid #FFFFFF;
+    padding:2em;
+    border-radius: 10px;
+  }
+legend {
+    position: relative;
+    margin-left:calc(50% - 10%);
+    width:auto;
+}
+
+#sign-up-form
+{
+    background-color: #A7B6E0;
+    padding: 5em 5em;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin:2em;
+    font-size: 20px;
+}
+
+#sign-up-form .form-group .requiredField
+{
+    background-color: transparent;
+    padding-left:0;
+    font-size: 20px;
+}
+
+#resultsContainer
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
+    position: relative;
+    width:100%;
+}
+
+#resultsTable
+{
+    width:100%;
+    background-color: #A7B6E0;
+    border-radius: 10px;
+}
+
+#resultsTable td , #resultsTable th{
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 15px;
+  }
+
+  #noResults
+  {
+    background-color: #A7B6E0;
+    border-radius: 10px;
+    /* color:#ddd; */
+    width:100%;
+    text-align: center;
+    padding:1em;
+  }
+
+  #patientsList
+  {
+    position: relative;
+    margin-top: 130px;
+    background-color: #BABDF9; /* set the background color to a light purple */
+    border: 1px solid #BABDF9; /* add a border around the box */
+    padding: 1.5em; /* add some padding inside the box */
+    padding-top:2.5em;
+    margin-left: 5%;
+    width: 85%;
+    /* top:5em; */
+    border-radius: 1em;
+    display: none;
+  } 
+
+  /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #9FA3F2;
+    /* color: #000000; */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: #4a50d2;
+    color:#eee;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    /* width: 100%; */
+  }
+
+  #logoContainer
+  {
+    position: relative;
+    /* width:100%; */
+    margin:0;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    flex-direction: row;
+  }
+
+  #greetingsContainer
+  {
+    position:relative;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    right:0;
+    height: 100%;
+    padding-right: 1em;
+  }
+
+  #greetingsTextContainer
+  {
+    margin-right: 1em;
+  }
+
+  #patientListDetails
+  {
+    margin: 2em;
+    background-color: #A7B6E0;
+    border-radius: 10px;
+    padding:2em;
+    /* width:100%; */
+  }
+
+  #patientListDetails td
+  {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+    width:50%;
+  }
+
+  .messages
+  {
+    color:red;
+  }
+
+  .patientPicHolder
+  {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+
+  .patientPicContainer
+  {
+    display: inline-flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+    font: 1em sans-serif;
+    column-gap:2em;
+    border-radius: 10px;
+  }

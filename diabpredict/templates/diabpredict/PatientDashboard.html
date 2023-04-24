@@ -1,0 +1,350 @@
+{% extends 'diabpredict\baseForm.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Page</title>
+    <link rel="stylesheet" href="{% static 'diabpredict/styles.css' %}">
+</head>
+<body id="bodyContainer">
+    <div id="headerContent">
+        <div id="logoContainer">
+            <img id="heading-icon" src="{% static 'diabpredict/icon.png' %}" alt="Icon">
+            <h1 id="heading"><b><u>DiabPredict</u></b></h1>
+            <!-- <a href="diabpredict/homePage.html">
+                <img id="home-icon" src="{% static 'diabpredict/home.png' %}" alt="Home icon">
+            </a> -->
+        </div>
+        <div id="greetingsContainer" >
+            <div>
+                <h1 style = "font-family: 'Poppins', sans-serif; width:100%" id="title-greeting">Hello {{first_name}}!</h1>
+                <h3 style = "font-family: 'Poppins', sans-serif;" id="subtitle-greeting">Healthy greetings</h3>
+            </div>
+            <div class="circle">
+                <img src="media/{{ doctor_pic }}" alt="Provider Image">
+            </div>
+        </div>
+    </div>
+
+    <div id="contentContainer">
+        <div id="right-container">
+        <div id = "demographics">
+            <div>
+                <img  class="patientPic" src="media/{{ profilePic }}" alt="Provider Image">
+            </div>
+            <div id="patientdemographics">
+                <table id="patientinfo">
+                    <tr>
+                        <td><b>Patient Name</b></td>
+                        <td>{{first_name}} {{last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Age</b></td>
+                        <td>{{age}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Gender</b></td>
+                        <td>{{gender}}</td>
+                    </tr>
+                    <tr>
+                            <td><b>BMI</b></td>
+                            <td>{{bmi}}</td>
+                        </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Phone</b></td>
+                        <td>{{phone}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Treated by</b></td>
+                        <td>{{'Dr.'}} {{doctor_name}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="overflow: auto;" id="questionnaire">
+            <!-- <h2 style = "font-family: 'Poppins', sans-serif;">Patient</h2> -->
+            <h3><p style = "font-family: 'Poppins', sans-serif;">Please complete the following questionnaire to the best of your knowledge:</p></h3>
+            <form action="{% url 'patientDashboard' %}" method = "POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type = "submit" class = "signup" style = "width:100%; margin-bottom: 5%;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- 
+	
+	⁃	What is the highest grade or year of school you completed?
+	⁃   Indicate your annual household income from all sources -->
+    <!-- <div style="overflow: auto;" id="questionnaire">
+        <h2 style = "font-family: 'Poppins', sans-serif;">Patient</h2>
+        <p style = "font-family: 'Poppins', sans-serif;">Please complete the following questionnaire to the best of your knowledge:</p>
+        <form>
+            <div id="question">
+                <label id="questions" for="q1">1. Have you ever been diagnosed with diabetes?</label>
+                <div id="answers">
+                    <input type="radio" id="q1-no" name="q1" value="no">
+                    <label for="q1-no">No</label>
+                    <input type="radio" id="q1-pre" name="q1" value="pre">
+                    <label for="q1-pre">Pre Diabetes</label>
+                    <input type="radio" id="q1-diabetes" name="q1" value="diabetes">
+                    <label for="q1-diabetes">Diabetes</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q2">2. To the best of your knowledge, do you have a history of high blood pressure?</label>
+                <div id="answers">
+                    <input type="radio" id="q2-yes" name="q2" value="yes">
+                    <label for="q2-yes">Yes</label>
+                    <input type="radio" id="q2-no" name="q2" value="no">
+                    <label for="q2-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q3">3. To the best of your knowledge, do you have a history of high cholesterol?</label>
+                <div id="answers">
+                    <input type="radio" id="q3-yes" name="q3" value="yes">
+                    <label for="q3-yes">Yes</label>
+                    <input type="radio" id="q3-no" name="q3" value="no">
+                    <label for="q3-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q4">4. Has your cholesterol been checked in the last 5 years?</label>
+                <div id="answers">
+                    <input type="radio" id="q4-yes" name="q4" value="yes">
+                    <label for="q4-yes">Yes</label>
+                    <input type="radio" id="q4-no" name="q4" value="no">
+                    <label for="q4-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q5">5. Enter your BMI index</label>
+                <div id="answers">
+                    <input type="input" id="q5-yes" name="q5">
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q6">6. Do you have a history of smoking cigarettes or do you currently smoke?</label>
+                <div id="answers">
+                    <input type="radio" id="q6-yes" name="q6" value="yes">
+                    <label for="q6-yes">Yes</label>
+                    <input type="radio" id="q6-no" name="q6" value="no">
+                    <label for="q6-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q7">7. Have you ever had a stroke?</label>
+                <div id="answers">
+                    <input type="radio" id="q7-yes" name="q7" value="yes">
+                    <label for="q7-yes">Yes</label>
+                    <input type="radio" id="q7-no" name="q7" value="no">
+                    <label for="q7-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q8">8. Have you ever been diagnosed with coronary heart disease (CHD) or myocardial infarction (MI)?</label>
+                <div id="answers">
+                    <input type="radio" id="q8-yes" name="q8" value="yes">
+                    <label for="q8-yes">Yes</label>
+                    <input type="radio" id="q8-no" name="q8" value="no">
+                    <label for="q8-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q9">9. Have you participated in physical activity in past 30 days not including job?</label>
+                <div id="answers">
+                    <input type="radio" id="q9-yes" name="q9" value="yes">
+                    <label for="q9-yes">Yes</label>
+                    <input type="radio" id="q9-no" name="q9" value="no">
+                    <label for="q9-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q10">10. Do you consume fruits 1 or more times per day?</label>
+                <div id="answers">
+                    <input type="radio" id="q10-yes" name="q10" value="yes">
+                    <label for="q10-yes">Yes</label>
+                    <input type="radio" id="q10-no" name="q10" value="no">
+                    <label for="q10-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q11">11. Do you consume vegetables 1 or more times per day?</label>
+                <div id="answers">
+                    <input type="radio" id="q11-yes" name="q11" value="yes">
+                    <label for="q11-yes">Yes</label>
+                    <input type="radio" id="q11-no" name="q11" value="no">
+                    <label for="q11-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q12">12. Are you a heavy drinker? (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)?</label>
+                <div id="answers">
+                    <input type="radio" id="q12-yes" name="q12" value="yes">
+                    <label for="q12-yes">Yes</label>
+                    <input type="radio" id="q12-no" name="q12" value="no">
+                    <label for="q12-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q13">13. Do you have any kind of health care coverage, including health insurance, prepaid plans such as HMO, etc.?</label>
+                <div id="answers">
+                    <input type="radio" id="q13-yes" name="q13" value="yes">
+                    <label for="q13-yes">Yes</label>
+                    <input type="radio" id="q13-no" name="q13" value="no">
+                    <label for="q13-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q14">14. Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?</label>
+                <div id="answers">
+                    <input type="radio" id="q14-yes" name="q14" value="yes">
+                    <label for="q14-yes">Yes</label>
+                    <input type="radio" id="q14-no" name="q14" value="no">
+                    <label for="q14-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q15">15. Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?</label>
+                <div id="answers">
+                    <input type="radio" id="q15-yes" name="q15" value="yes">
+                    <label for="q15-yes">Yes</label>
+                    <input type="radio" id="q15-no" name="q15" value="no">
+                    <label for="q15-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q16">16. How would you rate your general health?</label>
+                <div id="answers">
+                    <input type="radio" id="q16-excellent" name="q16" value="excellent">
+                    <label for="q16-excellent">Excellent</label>
+                    <input type="radio" id="q16-verygood" name="q16" value="verygood">
+                    <label for="q16-verygood">Very Good</label>
+                    <input type="radio" id="q16-good" name="q16" value="good">
+                    <label for="q16-good">Good</label>
+                    <input type="radio" id="q16-fair" name="q16" value="fair">
+                    <label for="q16-fair">Fair</label>
+                    <input type="radio" id="q16-poor" name="q16" value="poor">
+                    <label for="q16-poor">Poor</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q17">17. Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health poor?</label>
+                <div id="answers">
+                    <input type="input" id="q17-mental" name="q17">
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q18">18. Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health poor?</label>
+                <div id="answers">
+                    <input type="input" id="q18-physical" name="q18">
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q19">19. Do you have serious difficulty walking or climbing stairs?</label>
+                <div id="answers">
+                    <input type="radio" id="q19-yes" name="q19" value="yes">
+                    <label for="q19-yes">Yes</label>
+                    <input type="radio" id="q19-no" name="q19" value="no">
+                    <label for="q19-no">No</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q20">20. What was your assigned sex at birth?</label>
+                <div id="answers">
+                    <input type="radio" id="q20-male" name="q20" value="male">
+                    <label for="q20-male">Male</label>
+                    <input type="radio" id="q20-female" name="q20" value="female">
+                    <label for="q20-female">Female</label>
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q21">21. Enter your age:</label>
+                <div id="answers">
+                    <input type="input" id="q21-age" name="q21">
+                </div>
+            </div>
+            <div id="question">
+                <label id="questions" for="q22">22. What is the highest level of education that you have completed?</label>
+                <div id="answers">
+                    <input type="radio" id="q22-male" name="q22" value="male">
+                    <label for="q22-male">Some high school, no diploma</label>
+                    <input type="radio" id="q22-female" name="q22" value="female">
+                    <label for="q22-female">High school graduate, diploma or the equivalent (GED)</label>
+                    <input type="radio" id="q22-female" name="q22" value="female">
+                    <label for="q22-female">Associate degree</label>
+                    <input type="radio" id="q22-female" name="q22" value="female">
+                    <label for="q22-female">Bachelor's degree</label>
+                    <input type="radio" id="q22-female" name="q22" value="female">
+                    <label for="q22-female">Master's degree</label>
+                    <input type="radio" id="q22-female" name="q22" value="female">
+                    <label for="q22-female">Doctorate degree</label>
+                </div>
+            </div>
+            <div>
+                <button id= "submitBtn" type="submit">Submit</button>
+              </div>
+            
+             <fieldset>
+                <legend>Question 1:</legend>
+                <label>
+                  <input type="radio" name="q1" value="option1">
+                  Option 1
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="q1" value="option2">
+                  Option 2
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="q1" value="option3">
+                  Option 3
+                </label>
+              </fieldset>
+            
+              <fieldset>
+                <legend>Question 2:</legend>
+                <label>
+                  <input type="radio" name="q2" value="option1">
+                  Option 1
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="q2" value="option2">
+                  Option 2
+                </label>
+                <br>
+                <label>
+                  <input type="radio" name="q2" value="option3">
+                  Option 3
+                </label>
+              </fieldset> -->
+        <!-- </form> -->
+    <!-- </div> -->
+
+    <div id="dialog-box-outside">
+        <div id="button-container">
+            <button onclick="viewQuestions()" id="predictBtn" class="rounded-button">Test Diabetes</button>
+            <button onclick="window.location.href='ViewResults.html'" class="rounded-button">View results</button>  
+        </div>
+        <div id="img-container">
+            <img id="dialog-image" src="{% static 'diabpredict/providerDialogBox.png' %}" alt="Blood test Image">
+            <h4 id="dialog-footnote">Know your sugar levels before they <br> become a problem with <span id="transition-footnote">DiabPredict</span></h4>    
+        </div>
+     </div>
+</div>
+<script src="{% static 'diabpredict/patientLandingPage.js' %}"></script>
+</body>
+</html>
+{% endblock %}

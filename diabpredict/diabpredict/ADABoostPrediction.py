@@ -4,7 +4,7 @@ import numpy as np
 
 class ADABoost():
     def __init__(self):
-        self.model = joblib.load('C:\\Users\\User\\django_projects\\diabpredict\\adaboost_binary_model_nonscal.pkl')
+        self.model = joblib.load('adaboost_binary_model_nonscal.pkl')
 
     def age_to_value(self,age_str):
         age = int(age_str)

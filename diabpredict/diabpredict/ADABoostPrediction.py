@@ -95,9 +95,9 @@ class ADABoost():
                 preprocessed_data = [[preprocessed_data[key] for key in preprocessed_data]]
                 
                 # Generate the prediction using the loaded model
-                prediction = self.model.predict(preprocessed_data)
+                prediction = self.model.predict(preprocessed_data)[0]
 
                 # Print the predicted value
                 print(self.get_label_text(prediction))
 
-                return np.argmax(prediction)
+                return prediction

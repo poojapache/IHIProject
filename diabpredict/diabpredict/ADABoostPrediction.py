@@ -1,10 +1,12 @@
 import joblib
 import sklearn
 import numpy as np
+import os
 
 class ADABoost():
     def __init__(self):
-        self.model = joblib.load('../adaboost_binary_model_nonscal.pkl')
+        cwd = os.getcwd()
+        self.model = joblib.load(cwd+'/adaboost_binary_model_nonscal.pkl')
 
     def age_to_value(self,age_str):
         age = int(age_str)

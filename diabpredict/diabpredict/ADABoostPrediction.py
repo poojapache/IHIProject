@@ -5,7 +5,7 @@ import os
 
 class ADABoost():
     def __init__(self):
-        cwd = os.getcwd()
+        cwd = os.getcwd()+'/IHIProject/diabpredict'
         self.model = joblib.load(cwd+'/adaboost_binary_model_nonscal.pkl')
 
     def age_to_value(self,age_str):
